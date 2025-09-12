@@ -1,5 +1,3 @@
-with import <nixpkgs> {};
+{ pkgs ? import <nixpkgs> {} }:
 
-{
-        fdm = pkgs.callPackage ./fdm.nix {};
-}
+pkgs.callPackage ./fdm.nix {}

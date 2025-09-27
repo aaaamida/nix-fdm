@@ -16,14 +16,12 @@
 
 stdenv.mkDerivation rec {
         pname = "freedownloadmanager";
-        version = "6.29.1";
+        version = "6.30";
 
         src = fetchurl {
                 url = "https://files2.freedownloadmanager.org/6/latest/freedownloadmanager.deb";
-                hash = "sha256-IS+WFtoU65XL/Ufs+f+gttq6BBPgDSLFKUtlWfNtxJM=";
+                hash = "sha256-HHrwD1txyVdNvXXeDr/FxfjnJDTEo2BtQanB0CiEpH4=";
         };
-
-        unpackPhase = "dpkg-deb -x $src .";
 
         nativeBuildInputs = [
                 dpkg
@@ -58,6 +56,8 @@ stdenv.mkDerivation rec {
         ];
 
         autoPatchelfIgnoreMissingDeps = [ "libmimerapi.so" ];
+
+        unpackPhase = "dpkg-deb -x $src .";
 
         installPhase = ''
                 mkdir -p $out/bin
